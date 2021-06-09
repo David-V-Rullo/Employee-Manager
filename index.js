@@ -29,29 +29,26 @@ async function loadMainPrompts() {
           name: "View All Employees By Department",
           value: "VIEW_EMPLOYEES_BY_DEPARTMENT"
         },
-        // Bonus
-        // {
-        //   name: "View All Employees By Manager",
-        //   value: "VIEW_EMPLOYEES_BY_MANAGER"
-        // }, 
+        {
+          name: "View All Employees By Manager",
+          value: "VIEW_EMPLOYEES_BY_MANAGER"
+        }, 
         {
           name: "Add Employee",
           value: "ADD_EMPLOYEE"
         },
-        // Bonus
-        // {
-        //   name: "Remove Employee",
-        //   value: "REMOVE_EMPLOYEE"
-        // },
+        {
+          name: "Remove Employee",
+          value: "REMOVE_EMPLOYEE"
+        },
         {
           name: "Update Employee Role",
           value: "UPDATE_EMPLOYEE_ROLE"
         },
-        // Bonus
-        // {
-        //   name: "Update Employee Manager",
-        //   value: "UPDATE_EMPLOYEE_MANAGER"
-        // },
+        {
+          name: "Update Employee Manager",
+          value: "UPDATE_EMPLOYEE_MANAGER"
+        },
         {
           name: "View All Roles",
           value: "VIEW_ROLES"
@@ -60,11 +57,10 @@ async function loadMainPrompts() {
           name: "Add Role",
           value: "ADD_ROLE"
         },
-        //  Bonus
-        // {
-        //   name: "Remove Role",
-        //   value: "REMOVE_ROLE"
-        // },
+        {
+          name: "Remove Role",
+          value: "REMOVE_ROLE"
+        },
         {
           name: "View All Departments",
           value: "VIEW_DEPARTMENTS"
@@ -73,11 +69,10 @@ async function loadMainPrompts() {
           name: "Add Department",
           value: "ADD_DEPARTMENT"
         },
-        //  Bonus
-        // {
-        //   name: "Remove Department",
-        //   value: "REMOVE_DEPARTMENT"
-        // },
+        {
+          name: "Remove Department",
+          value: "REMOVE_DEPARTMENT"
+        },
         {
           name: "Quit",
           value: "QUIT"

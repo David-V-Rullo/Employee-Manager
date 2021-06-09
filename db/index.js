@@ -9,6 +9,7 @@ class DB {
   // Find all employees, join with roles and departments to display their roles, salaries, departments, and managers
   findAllEmployees() {
     return this.connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
       // CREATE SELECT STATMENT WITH THE FOLLOWING COLUMNS FROM THREE TABLES.
       // id, first_name, last_name FROM employee TABLE AND department name from department TABLE AND SELECT salary FROM role TABLE
       // YOUR NEED TO USE LEFT JOINS TO JOIN THREE TABLES
@@ -33,7 +34,8 @@ class DB {
   // Update the given employee's role
   updateEmployeeRole(employeeId, roleId) {
     return this.connection.query(
-      // YOUR CODE HERE
+      "UPDATE employee SET role_id = ? WHERE id = ?",
+      [roleId, employeeId]
     );
   }
 
@@ -48,6 +50,8 @@ class DB {
   // Find all roles, join with departments to display the department name
   findAllRoles() {
     return this.connection.query(
+      "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"     
+      
       // SELECT THE FOLLOWING COLUMNS:
       // id, title, salary FROM role TABLE AND department name FROM department TABLE
       // YOU NEED TO USE LEFT JOIN TO JOIN role and department TABLES
@@ -57,9 +61,7 @@ class DB {
 
   // Create a new role
   createRole(role) {
-    return this.connection.query(
-      // YOUR CODE HERE
-      );
+    return this.connection.query("INSERT INTO role SET ?", role)
   }
 
 
