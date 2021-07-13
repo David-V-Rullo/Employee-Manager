@@ -9,11 +9,18 @@ class DB {
   // Find all employees, join with roles and departments to display their roles, salaries, departments, and managers
   findAllEmployees() {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
       // CREATE SELECT STATMENT WITH THE FOLLOWING COLUMNS FROM THREE TABLES.
-      // id, first_name, last_name FROM employee TABLE AND department name from department TABLE AND SELECT salary FROM role TABLE
+      // id, first_name, last_name FROM employee 
+      //TABLE AND department name from department TABLE 
+      //AND SELECT salary FROM role TABLE
       // YOUR NEED TO USE LEFT JOINS TO JOIN THREE TABLES
       // YOUR CODE HERE
+      
+      "SELECT employee.id, employee.first_name, employee.last_name, role.salary AS salary, department.name AS department FROM employee LEFT JOIN role on employee.id = role.id LEFT JOIN department on role.department_id = department.id" 
+      
+      // role.salary LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id = ?;",
+      
+
     );
   }
 
@@ -34,8 +41,11 @@ class DB {
   // Update the given employee's role
   updateEmployeeRole(employeeId, roleId) {
     return this.connection.query(
+      // YOUR CODE HERE
+      //CHECK
       "UPDATE employee SET role_id = ? WHERE id = ?",
       [roleId, employeeId]
+
     );
   }
 
@@ -50,18 +60,25 @@ class DB {
   // Find all roles, join with departments to display the department name
   findAllRoles() {
     return this.connection.query(
-      "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"     
-      
       // SELECT THE FOLLOWING COLUMNS:
       // id, title, salary FROM role TABLE AND department name FROM department TABLE
       // YOU NEED TO USE LEFT JOIN TO JOIN role and department TABLES
       // YOUR CODE HERE
+      
+      "SELECT role.id, role.title, role.salary, department.name AS department FROM role LEFT JOIN department on role.department_id = department.id"
+      
+
     );
   }
 
   // Create a new role
   createRole(role) {
-    return this.connection.query("INSERT INTO role SET ?", role)
+    return this.connection.query(
+      // YOUR CODE HERE
+      
+      "INSERT INTO role SET ?", role
+  
+      );
   }
 
 
@@ -76,6 +93,7 @@ class DB {
   createDepartment(department) {
     return this.connection.query(
       // YOUR CODE HERE
+      "INSERT INTO department SET?", department
     );
   }
 
